@@ -1,4 +1,4 @@
-import LoreCardPlaceholder from "@/components/LoreCardPlaceholder";
+import LoreCard from "@/components/LoreCard";
 import { getLoreCards } from "@/lib/data";
 
 export default async function Home() {
@@ -15,7 +15,7 @@ export default async function Home() {
         <h2 className="text-2xl font-semibold text-white mb-6 border-b border-[#333] pb-2">Recent Lore</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {cards.map((card) => (
-            <LoreCardPlaceholder
+            <LoreCard
               key={card.id}
               title={card.title}
               content={card.content}
