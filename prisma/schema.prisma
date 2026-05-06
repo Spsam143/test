@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model World {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  imageUrl    String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  categories  Category[]
+}
+
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  worldId     String
+  world       World      @relation(fields: [worldId], references: [id], onDelete: Cascade)
+  loreCards   LoreCard[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([worldId])
+}
+
+model LoreCard {
+  id         String   @id @default(cuid())
+  title      String
+  content    String   @db.Text
+  imageUrl   String?
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([categoryId])
+}
