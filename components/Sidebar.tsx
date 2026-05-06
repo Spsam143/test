@@ -3,7 +3,7 @@ import { Home, Book, Clock, Map } from 'lucide-react';
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col h-full w-16 md:w-64 bg-[#141414] border-r border-[#2a2a2a] py-6 px-4 shrink-0">
+    <div className="flex flex-col h-full w-16 md:w-64 bg-transparent border-r border-zinc-800/50 py-6 px-4 shrink-0">
       <div className="flex items-center justify-center md:justify-start mb-8 text-white font-bold text-xl px-2">
         <span className="md:hidden">V</span>
         <span className="hidden md:block">VVD World</span>
@@ -27,9 +27,9 @@ const NavItem = ({ href, icon, label }: { href: string; icon: React.ReactNode; l
   return (
     <Link
       href={href}
-      className="flex items-center justify-center md:justify-start gap-3 p-3 rounded-lg text-neutral-400 hover:text-white hover:bg-[#252525] transition-colors"
+      className="flex items-center justify-center md:justify-start gap-3 p-3 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800/50 transition-colors group"
     >
-      {icon}
+      <div className="text-zinc-500 group-hover:text-white transition-colors">{icon}</div>
       <span className="hidden md:block text-sm font-medium">{label}</span>
     </Link>
   );
